@@ -10,15 +10,16 @@ var getElementsByClassName = function(className
   let elemsWithClass = [];
   // create a function that returns childnodes
   let testClass = function(node) {
-    if(node.classList.contains(className)){
+    console.log (node.classList)
+    if(node.classList && node.classList.contains(className)){
       elemsWithClass.push(node);
     }
-    if(node.hasChildNodes){
-      node.forEach((child) => {
+    if(node.hasChildNodes()){
+      node.childNodes.forEach((child) => {
         testClass(child);
       })
     }
-    return elemsWithClass;
+
   }
   // test for the classname on each node
 
@@ -27,5 +28,5 @@ var getElementsByClassName = function(className
   // if there are child nodes on the current elem run the function again on each child node
   testClass(document.body);
   // return the array
-
+  return elemsWithClass;
 };
